@@ -27,7 +27,7 @@ int main()
     Cloud cloud;
     Cloud* cloudPtr = &cloud;
     Dashboard dash(cloudPtr);
-    cloud.init_cloud();
+    cloud.initCloud();
     
     while(inputValue != 5)
     {

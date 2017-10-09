@@ -42,9 +42,9 @@ void Dashboard::getDashboard()
     for (int i=0;i<unitVector.size();i++)
     {
         Units tempUnit = unitVector[i];
-        string tempId = tempUnit.id;
-        int tempStatus = tempUnit.status;
-        string tempInfo = tempUnit.info;
+        string tempId = tempUnit.getId();
+        int tempStatus = tempUnit.getStatus();
+        string tempInfo = tempUnit.getInfo();
         
         int blankSpaceNr = maxIdNameLength - tempId.size();
         
@@ -86,7 +86,7 @@ int Dashboard::printDetails(string unitId)
     for (int i=0;i<unitVector.size();i++)
     {
         Units tempUnit = unitVector[i];
-        string tempId = tempUnit.id;
+        string tempId = tempUnit.getId();
         if (unitId==tempId)
         {
             unitLocation=i;
@@ -98,13 +98,13 @@ int Dashboard::printDetails(string unitId)
     
     if (unitFound==0)
     {
-        cout << "Visar information om " + unitVector[unitLocation].id << endl;
-        if (unitVector[unitLocation].status ==1)
+        cout << "Visar information om " + unitVector[unitLocation].getId() << endl;
+        if (unitVector[unitLocation].getStatus()==1)
         {
             cout << "1) Avaktivera" << endl;
             changeStatus=0;
         }
-        if (unitVector[unitLocation].status ==0)
+        if (unitVector[unitLocation].getStatus() ==0)
         {
             cout << "1) Aktivera" << endl;
             changeStatus=1;
@@ -122,7 +122,7 @@ int Dashboard::printDetails(string unitId)
 
 void Dashboard::setStatus(int index,int status)
 {
-    cloud1->unitVector[index].status=status;
+    cloud1->unitVector[index].setStatus(status);
 }
 
 

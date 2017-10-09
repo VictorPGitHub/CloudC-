@@ -54,7 +54,7 @@ void Cloud::addUnit(string id1, int status1, string info1)
             for (int i=0;i<unitVector.size();i++)
             {
                 Units tempUnit = unitVector[i];
-                string tempId = tempUnit.id;
+                string tempId = tempUnit.getId();
                 if (tempId==id1)
                 {                    
                     checkIfIdExist=0;
@@ -80,7 +80,7 @@ void Cloud::addUnit(string id1, int status1, string info1)
      unitVector.push_back(unit1);    
 }
 
-void Cloud::init_cloud()
+void Cloud::initCloud()
 {
     addUnit("Sensor 1",1,"Temp.sensor");
     addUnit("Kylare 9",1,"Kylare i serverhall");
@@ -114,8 +114,8 @@ void Cloud::printActiveUnits()
     for (int i=0;i<unitVector.size();i++)
     {
         Units tempUnit = unitVector[i];
-        string tempId = tempUnit.id;
-        int tempStatus = tempUnit.status;
+        string tempId = tempUnit.getId();
+        int tempStatus = tempUnit.getStatus();
         if (tempStatus==1)
         {
             cout << tempId <<endl;
@@ -137,13 +137,15 @@ void Cloud::removeUnit(string unitToRemove)
             printActiveUnits();
         }
         cout << "Id på vilken som ska tas bort: ";
-        cin >> unitToRemove;
+        cin.clear();
+        cin.ignore();
+        getline(cin, unitToRemove);
         cout << endl;
     }
     for (int i=0;i<unitVector.size();i++)
     {
         Units tempUnit = unitVector[i];
-        string tempString = tempUnit.get_id();
+        string tempString = tempUnit.getId();
         if (tempString == unitToRemove)
         {
             cout << "tar bort " + tempString << endl;

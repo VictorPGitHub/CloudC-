@@ -31,20 +31,24 @@ Units::Units(string id1,int status1,string info1)
             
 }
 
-string Units::get_id()
+string Units::getId()
 {
     return id;
 }
     
-int Units::get_status()
+int Units::getStatus()
 {
     return status;
 }
-string Units::get_info()
+string Units::getInfo()
 {
     return info;
 }
-    
+
+void Units::setStatus(int status1)
+{
+    status=status1;
+}
 
 
 

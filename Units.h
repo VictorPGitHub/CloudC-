@@ -17,21 +17,18 @@
 using namespace std;
 
 class Units {
-public:
+public:   
+    Units(string, int, string);
+    string getId();
+    int getStatus();
+    string getInfo();
+    void setStatus(int);
+      
+private:
     string id;
     int status;
     string info;
-    
-    Units(string, int, string);
-    string get_id();
-    int get_status();
-    string get_info();
-      
-private:
-
 };
-
-
 
 #endif /* UNITS_H */
 

@@ -20,14 +20,16 @@
 
 class Dashboard {
 public:
-    vector<Units> unitVector;
-    Cloud* cloud1;
+    
+    
     Dashboard(Cloud* cloud);
     void getDashboard();
     int printDetails(string);
     void setStatus(int,int);
 
 private:
+    Cloud* cloud1;
+    vector<Units> unitVector;
 };
 
 #endif /* DASHBOARD_H */
