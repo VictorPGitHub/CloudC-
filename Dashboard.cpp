@@ -20,7 +20,6 @@
 using namespace std;
 Cloud* cloud1;
 
-
 Dashboard::Dashboard(Cloud* cloud) 
 {
     cloud1 = cloud;    
@@ -56,7 +55,6 @@ void Dashboard::getDashboard()
     }
     
     cout << "Ange Enhet att ändra eller meny:";
-    
     string userInput;
     int inputFound;
     cin.clear();
@@ -65,6 +63,7 @@ void Dashboard::getDashboard()
     if (userInput!="meny")
     {
         inputFound = printDetails(userInput);
+        
         if(inputFound==1)
         {
             cout << endl;
@@ -72,6 +71,7 @@ void Dashboard::getDashboard()
             cloud1->pressY();
         }
     }
+    
     else
     {
         cout << endl;
@@ -83,6 +83,7 @@ int Dashboard::printDetails(string unitId)
     vector<Units> unitVector = cloud1->getUnitVector();
     int unitFound = 1;
     int unitLocation=10000;
+    
     for (int i=0;i<unitVector.size();i++)
     {
         Units tempUnit = unitVector[i];
@@ -99,11 +100,13 @@ int Dashboard::printDetails(string unitId)
     if (unitFound==0)
     {
         cout << "Visar information om " + unitVector[unitLocation].getId() << endl;
+        
         if (unitVector[unitLocation].getStatus()==1)
         {
             cout << "1) Avaktivera" << endl;
             changeStatus=0;
         }
+        
         if (unitVector[unitLocation].getStatus() ==0)
         {
             cout << "1) Aktivera" << endl;
@@ -111,6 +114,7 @@ int Dashboard::printDetails(string unitId)
         }
         cout << "2) tillbaka till menyn" << endl;
         cin >> userInput;
+        
         if (userInput=="1")
         {
             setStatus(unitLocation,changeStatus);

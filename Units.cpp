@@ -27,8 +27,7 @@ Units::Units(string id1,int status1,string info1)
 {
     id=id1;
     status=status1;
-    info=info1;
-            
+    info=info1;          
 }
 
 string Units::getId()

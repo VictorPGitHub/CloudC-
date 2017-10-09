@@ -19,6 +19,7 @@ using namespace std;
 class Units {
 public:   
     Units(string, int, string);
+    
     string getId();
     int getStatus();
     string getInfo();

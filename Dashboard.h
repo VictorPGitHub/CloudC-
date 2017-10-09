@@ -17,12 +17,10 @@
 #include "Units.h"
 #include "Cloud.h"
 
-
 class Dashboard {
-public:
-    
-    
+public:        
     Dashboard(Cloud* cloud);
+    
     void getDashboard();
     int printDetails(string);
     void setStatus(int,int);
