@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   Units.h
  * Author: VictorPonten
@@ -29,6 +23,8 @@ private:
     string id;
     int status;
     string info;
+    int sensorValue;
+    string sensorValueName;
 };
 
 #endif /* UNITS_H */

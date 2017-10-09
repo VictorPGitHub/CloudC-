@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   main.cpp
  * Author: VictorPonten
@@ -15,19 +9,21 @@
 #include "Dashboard.h"
 #include "Cloud.h"
 
-using namespace std;
-
-/*
- * 
- */
 int main() 
 {
+    //int that handles the main loop
     int inputValue = 0;
+    
+    //get instance of cloud, fill it up with Units and gets pointer
     Cloud cloud;
-    Cloud* cloudPtr = &cloud;
-    Dashboard dash(cloudPtr);
+    Cloud* cloudPtr = &cloud;    
     cloud.initCloud();
     
+    //get instance of Dashboard and sends pointer of initiated cloud
+    Dashboard dash(cloudPtr);
+    
+    //Start loop, could have been done with case instead and maybe moved to cloud
+    //gets the cloud menu and exit on 5
     while(inputValue != 5)
     {
         cloud.printMenu();
@@ -36,7 +32,6 @@ int main()
         while (inputValue==0)
         {
             inputValue=cloud.getInputValue();
-    
         } 
         
         if(inputValue==1)
@@ -47,6 +42,8 @@ int main()
         
         if (inputValue==2)
         {
+            //did not get pre defined inputs to work so had to use (0,"")
+            //could have been solved with case or likewise instead in add function
             cloud.addUnit("user input",0,"");
             inputValue=0;
         }

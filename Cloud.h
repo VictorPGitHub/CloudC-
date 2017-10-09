@@ -16,24 +16,22 @@
 #include <vector>
 #include "Units.h"
 #include <string>
-using namespace std;
 
 class Cloud {
 public:
-    //försök göra private
-    vector<Units> unitVector;
     Cloud();
     void pressY();
     void printMenu();
     int getInputValue();
     void printActiveUnits();
+    void printAllUnits();
     void addUnit(string, int, string);
     void removeUnit(string);
     void initCloud();
     vector<Units> getUnitVector();
-    void setStatus();
+    void setStatus(int,int);
 private:
-    
+    vector<Units> unitVector;
 };
 
 #endif /* CLOUD_H */

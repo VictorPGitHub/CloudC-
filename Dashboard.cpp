@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   Dashboard.cpp
  * Author: VictorPonten
@@ -16,18 +10,22 @@
 #include "Units.h"
 #include <iostream>
 #include "Cloud.h"
+using std::cout;
+using std::cin;
 
-using namespace std;
 Cloud* cloud1;
 
+//constructs dashboard with corresponding cloud
 Dashboard::Dashboard(Cloud* cloud) 
 {
-    cloud1 = cloud;    
+    cloud1 = cloud; 
+    vector<Units> unitVector;
 }
 
+//creates the dashboard and sends it to main
 void Dashboard::getDashboard()
 {     
-    vector<Units> unitVector = cloud1->getUnitVector();
+    unitVector = cloud1->getUnitVector();
     string blankSpace = "                         ";
     int maxIdNameLength =10;
     int maxInfoNameLength =25;
@@ -54,6 +52,7 @@ void Dashboard::getDashboard()
         cout << "-----------------------------------------------"<<endl;
     }
     
+    //prints details or return to menu
     cout << "Ange Enhet att ändra eller meny:";
     string userInput;
     int inputFound;
@@ -78,11 +77,12 @@ void Dashboard::getDashboard()
     }
 }
 
+// the function printsDetails. more details needs to be added in Units to get
 int Dashboard::printDetails(string unitId)
 {
     vector<Units> unitVector = cloud1->getUnitVector();
     int unitFound = 1;
-    int unitLocation=10000;
+    int unitIndex=10000;
     
     for (int i=0;i<unitVector.size();i++)
     {
@@ -90,7 +90,7 @@ int Dashboard::printDetails(string unitId)
         string tempId = tempUnit.getId();
         if (unitId==tempId)
         {
-            unitLocation=i;
+            unitIndex=i;
             unitFound=0;
         }
     }
@@ -99,15 +99,15 @@ int Dashboard::printDetails(string unitId)
     
     if (unitFound==0)
     {
-        cout << "Visar information om " + unitVector[unitLocation].getId() << endl;
+        cout << "Visar information om " + unitVector[unitIndex].getId() << endl;
         
-        if (unitVector[unitLocation].getStatus()==1)
+        if (unitVector[unitIndex].getStatus()==1)
         {
             cout << "1) Avaktivera" << endl;
             changeStatus=0;
         }
         
-        if (unitVector[unitLocation].getStatus() ==0)
+        if (unitVector[unitIndex].getStatus() ==0)
         {
             cout << "1) Aktivera" << endl;
             changeStatus=1;
@@ -117,16 +117,17 @@ int Dashboard::printDetails(string unitId)
         
         if (userInput=="1")
         {
-            setStatus(unitLocation,changeStatus);
+            setStatus(unitIndex,changeStatus);
             cout<<endl;
         }
     }          
     return unitFound;
 }
 
+// Sets status from the Dashboard menu
 void Dashboard::setStatus(int index,int status)
 {
-    cloud1->unitVector[index].setStatus(status);
+    cloud1->setStatus(index,status);
 }
 
 

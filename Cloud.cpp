@@ -16,13 +16,14 @@
 #include <iostream>
 #include <vector>
 #include <string>
-using namespace std;
+using std::cout;
+using std::cin;
 
-vector<Units> unitVector;
+
 
 Cloud::Cloud() 
 {
-    
+    vector<Units> unitVector;    
 }
 
 void Cloud::pressY()
@@ -89,8 +90,8 @@ void Cloud::initCloud()
 
 void Cloud::printMenu()
 {
-    cout << "Huvudmeny"<<endl;
- cout << "1) Visa anslutna enheter" << endl;
+cout << "Huvudmeny"<<endl;
+cout << "1) Visa anslutna enheter" << endl;
 cout << "2) Lägg till en ny enhet." << endl;
 cout << "3) Ta bort enheter" << endl;
 cout << "4) Visa instrumentpanelen (för att se status och ändra enheter)"<<endl;
@@ -107,7 +108,7 @@ int Cloud::getInputValue()
 
 void Cloud::printActiveUnits()
 {
-    
+    cout << endl;
     cout << " ID "<<endl;
     cout << "------"<<endl;
     
@@ -121,49 +122,80 @@ void Cloud::printActiveUnits()
             cout << tempId <<endl;
         }
     }
+    
+    cout << endl;
     pressY();
+}
+
+void Cloud::printAllUnits()
+{
+    cout << endl;
+    cout << " ID "<<endl;
+    cout << "------"<<endl;
+    
+    for (int i=0;i<unitVector.size();i++)
+    {
+        Units tempUnit = unitVector[i];
+        string tempId = tempUnit.getId();
+        int tempStatus = tempUnit.getStatus();
+        cout << tempId <<endl;        
+    }
+    
+    cout << endl;
 }
 
 void Cloud::removeUnit(string unitToRemove)
 {
-    int removedUnit;
-    string yesOrNo;
-    if (unitToRemove=="user input")
+    if (unitVector.size()==0)
     {
-        cout << "vill du se aktiva enheter(y/n):";
-        cin >> yesOrNo;
-        if (yesOrNo=="y")
-        {
-            printActiveUnits();
-        }
-        cout << "Id på vilken som ska tas bort: ";
-        cin.clear();
-        cin.ignore();
-        getline(cin, unitToRemove);
-        cout << endl;
+        cout << "Det finns inga enheter att ta bort";
     }
-    for (int i=0;i<unitVector.size();i++)
-    {
-        Units tempUnit = unitVector[i];
-        string tempString = tempUnit.getId();
-        if (tempString == unitToRemove)
+    else
+    {    
+        int removedUnit;
+        string yesOrNo;
+        if (unitToRemove=="user input")
         {
-            cout << "tar bort " + tempString << endl;
-            removedUnit=i;
-                    unitVector.erase(unitVector.begin()+removedUnit);
+            cout << "vill du se loggade enheter(y/n):";
+            cin >> yesOrNo;
+            if (yesOrNo=="y")
+            {
+                printAllUnits();
+            }
+            cout << "Id på vilken som ska tas bort: ";
+            cin.clear();
+            cin.ignore();
+            getline(cin, unitToRemove);
+            cout << endl;
         }
-    }
-    
-    cout << "enheter kvar" <<endl;
-    printActiveUnits();
+        for (int i=0;i<unitVector.size();i++)
+        {
+            Units tempUnit = unitVector[i];
+            string tempString = tempUnit.getId();
+            if (tempString == unitToRemove)
+            {
+                cout << "Tar bort: " + tempString << endl;
+                removedUnit=i;
+                        unitVector.erase(unitVector.begin()+removedUnit);
+            }
+        }
 
+        cout << "Enheter kvar:" <<endl;
+    }
     
+    printAllUnits();
+    pressY();
 }
 
 vector<Units> Cloud::getUnitVector()
 {
     vector<Units> tempUnits = unitVector;
     return tempUnits;
+}
+
+void Cloud::setStatus(int index, int newStatus)
+{
+    unitVector[index].setStatus(newStatus);
 }
 
 

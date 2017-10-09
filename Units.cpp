@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   Units.cpp
  * Author: VictorPonten
@@ -14,22 +8,25 @@
 #include "Units.h"
 #include <string>
 #include <iostream>
+using std::cout;
+using std::cin;
 
-using namespace std;
 
 string id;
 int status;
 string info;
-int sensorValue;
-string sensorValueName;
 
 Units::Units(string id1,int status1,string info1) 
 {
     id=id1;
     status=status1;
-    info=info1;          
+    info=info1; 
+    
+    // should be defined in inheritance subclasses of Units 
+    //int sensorValue;
+    //const string sensorValueName;
 }
-
+// all get functions
 string Units::getId()
 {
     return id;
@@ -44,6 +41,7 @@ string Units::getInfo()
     return info;
 }
 
+//set functions
 void Units::setStatus(int status1)
 {
     status=status1;
