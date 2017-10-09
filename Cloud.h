@@ -20,7 +20,8 @@ using namespace std;
 
 class Cloud {
 public:
-    
+    //försök göra private
+    vector<Units> unitVector;
     Cloud();
     void pressY();
     void printMenu();
@@ -32,7 +33,7 @@ public:
     vector<Units> getUnitVector();
     void setStatus();
 private:
-    vector<Units> unitVector;
+    
 };
 
 #endif /* CLOUD_H */

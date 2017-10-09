@@ -62,12 +62,12 @@ void Cloud::addUnit(string id1, int status1, string info1)
             
             }
             if (checkIfIdExist==0)
-                {
-                    cout << "ID finns redan ange nytt:";
-                    cin.clear();
-                    cin.ignore();
-                    cin >>id1;                    
-                }
+            {
+                cout << "ID finns redan ange nytt:";
+                cin.clear();
+                cin.ignore();
+                cin >>id1;                    
+            }
         }
 
         cout <<endl << "Enter Info:";
@@ -77,7 +77,7 @@ void Cloud::addUnit(string id1, int status1, string info1)
     }
     
     Units unit1(id1,status1,info1);
-     unitVector.push_back(unit1);    
+    unitVector.push_back(unit1);    
 }
 
 void Cloud::initCloud()
@@ -152,12 +152,9 @@ void Cloud::removeUnit(string unitToRemove)
             removedUnit=i;
                     unitVector.erase(unitVector.begin()+removedUnit);
         }
-
-
     }
-    cout << "enheter kvar" <<endl;
     
-
+    cout << "enheter kvar" <<endl;
     printActiveUnits();
 
     
