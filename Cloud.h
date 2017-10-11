@@ -25,7 +25,7 @@ public:
     int getInputValue();
     void printActiveUnits();
     void printAllUnits();
-    void addUnit(string, int, string);
+    void addUnit(string, string);
     void removeUnit(string);
     void initCloud();
     vector<Units> getUnitVector();

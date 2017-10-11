@@ -8,11 +8,15 @@
 #ifndef UNITS_H
 #define UNITS_H
 #include <string>
+
+#include "StatusEnum.h"
 using namespace std;
 
 class Units {
 public:   
-    Units(string, int, string);
+    
+    
+    Units(string, string);
     
     string getId();
     int getStatus();
@@ -21,10 +25,10 @@ public:
       
 private:
     string id;
-    int status;
     string info;
     int sensorValue;
     string sensorValueName;
+    StatusEnum::Status status;
 };
 
 #endif /* UNITS_H */

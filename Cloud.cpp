@@ -13,6 +13,7 @@
 
 #include "Cloud.h"
 #include "Units.h"
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -37,7 +38,7 @@ void Cloud::pressY()
     }
     cout << endl;
 }
-void Cloud::addUnit(string id1, int status1, string info1)
+void Cloud::addUnit(string id1, string info1)
 {
     if (id1=="user input")
     {
@@ -73,19 +74,18 @@ void Cloud::addUnit(string id1, int status1, string info1)
 
         cout <<endl << "Enter Info:";
         getline(cin, info1);
-        status1=1;
         pressY();
     }
     
-    Units unit1(id1,status1,info1);
+    Units unit1(id1,info1);
     unitVector.push_back(unit1);    
 }
 
 void Cloud::initCloud()
 {
-    addUnit("Sensor 1",1,"Temp.sensor");
-    addUnit("Kylare 9",1,"Kylare i serverhall");
-    addUnit("Tryck 300",1,"Trycksensor");
+    addUnit("Sensor 1","Temp.sensor");
+    addUnit("Kylare 9","Kylare i serverhall");
+    addUnit("Tryck 300","Trycksensor");
 }
 
 void Cloud::printMenu()

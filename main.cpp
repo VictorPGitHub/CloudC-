@@ -44,7 +44,7 @@ int main()
         {
             //did not get pre defined inputs to work so had to use (0,"")
             //could have been solved with case or likewise instead in add function
-            cloud.addUnit("user input",0,"");
+            cloud.addUnit("user input","");
             inputValue=0;
         }
         

@@ -6,20 +6,19 @@
  */
 
 #include "Units.h"
+#include "StatusEnum.h"
 #include <string>
 #include <iostream>
 using std::cout;
 using std::cin;
 
 
-string id;
-int status;
-string info;
 
-Units::Units(string id1,int status1,string info1) 
+
+Units::Units(string id1, string info1) 
 {
     id=id1;
-    status=status1;
+    status = StatusEnum::On;
     info=info1; 
     
     // should be defined in inheritance subclasses of Units 
@@ -34,7 +33,8 @@ string Units::getId()
     
 int Units::getStatus()
 {
-    return status;
+    int statusReturn = status;
+    return statusReturn;
 }
 string Units::getInfo()
 {
@@ -44,7 +44,14 @@ string Units::getInfo()
 //set functions
 void Units::setStatus(int status1)
 {
-    status=status1;
+    if (status1==0)
+    {
+        status=StatusEnum::Off;
+    }
+        if (status1==1)
+    {
+        status=StatusEnum::On;
+    }
 }
 
 
